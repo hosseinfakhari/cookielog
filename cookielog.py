@@ -50,8 +50,9 @@ def get_date_cookies(filename: str, target_date: datetime):
         file.readline()
         for row in file:
             r_cookie, r_date = row.split(',')
-            rd = datetime.strptime(r_date.rstrip('\n'), '%Y-%m-%dT%H:%M:%S%z')
-            if rd.date() == target_date.date():
+            row_date = datetime.strptime(r_date.rstrip('\n'),
+                                         '%Y-%m-%dT%H:%M:%S%z')
+            if row_date.date() == target_date.date():
                 cookies.append(r_cookie)
     return cookies
 
